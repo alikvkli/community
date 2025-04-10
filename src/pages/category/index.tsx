@@ -51,7 +51,7 @@ export default function CategoryPage() {
                 </div>
             </BottomSheet>
 
-            <div className="flex items-center flex-none w-full overflow-x-auto  p-4">
+            <div className="flex items-center flex-none w-full overflow-x-auto  p-4 mb-1">
                 <button onClick={() => setIsOpen(true)} className="flex items-center justify-center px-3 py-[4px] gap-1 border-[0.5px] border-[#0D0D0D] rounded-3xl">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 3.64388V13.6439M5 13.6439L7.71167 10.7655M5 13.6439L2.3125 10.7897M11 12.3105V2.31055M8.28918 5.18888L11.0009 2.31055L13.6884 5.16471" stroke="#0D0D0D" stroke-linecap="round" stroke-linejoin="round" />
