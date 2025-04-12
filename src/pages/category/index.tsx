@@ -3,6 +3,7 @@ import RadioInput from "@/components/RadioInput";
 import PublicLayout from "@/layouts/PublicLayout";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import postImage from '@/images/categories/post_1.jpg'
 
 const ToggleInput = ({ name }: { name: string }) => {
     const [isChecked, setIsChecked] = useState(false);
@@ -51,7 +52,7 @@ export default function CategoryPage() {
                 </div>
             </BottomSheet>
 
-            <div className="flex items-center flex-none w-full overflow-x-auto  p-4 mb-1">
+            <div className="flex items-center flex-none w-full overflow-x-auto  p-4">
                 <button onClick={() => setIsOpen(true)} className="flex items-center justify-center px-3 py-[4px] gap-1 border-[0.5px] border-[#0D0D0D] rounded-3xl">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 3.64388V13.6439M5 13.6439L7.71167 10.7655M5 13.6439L2.3125 10.7897M11 12.3105V2.31055M8.28918 5.18888L11.0009 2.31055L13.6884 5.16471" stroke="#0D0D0D" stroke-linecap="round" stroke-linejoin="round" />
@@ -69,7 +70,7 @@ export default function CategoryPage() {
                     <div onClick={() => navigate("/profile/ali")} className="w-[120px] h-[136px]  rounded-l-2xl">
                         <img
                             className="w-full h-full object-cover rounded-l-2xl"
-                            src="https://s3-alpha-sig.figma.com/img/69ea/9c29/31dcdb8a8cfdb2280a0c3f732d40b22d?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=XW9Ay-8hZStn~k62SKfqM6SVwPyLe9m0wOpwMAL-sHjfCWErJLPxCPS8gd3Rx-ONKQdoidjQwSo9~3GhkmUAYHlwpOZ9UKwO4wH6qulwzBYTvT7zKHjLuthNDuUIuseWu3jGgAQgeha9BS1aAIvVQGaK10Chcs25J7-DOnIFMwrxCtf9j7cOwQ~o-29nFpzgOPudfowcYzqMVS0qXE5Fh80VwjyVoPpVwPbhOpDdZWTuCa~SXnhDFUwky7CCb8AC6t2xWJT7WTfZHvby04UojS6X7Ml3nbfnva9FJ9E0wa5jWl9cQgwc9KeZS2OsNP~hZ7GxBbBkeTp3SbjnXsbPzA__" />
+                            src={postImage} />
                     </div>
                     <div className="flex flex-col px-3 py-4">
 

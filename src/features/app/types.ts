@@ -1,3 +1,4 @@
 export interface InitialStateProps {
-    login:boolean
+    login:boolean,
+    isCustomer: boolean,
 }
