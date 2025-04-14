@@ -13,7 +13,7 @@ import mastercard from "@/images/mastercard.png"
 
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
-    const { login, customerNotification, providerNotification, isScheduleRequest, isCustomer, acceptAppointment, isCheckout, checkPayment } = useAppSelector(state => state.app)
+    const { login, customerNotification, providerNotification, isCustomer, acceptAppointment, isCheckout, checkPayment } = useAppSelector(state => state.app)
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 

@@ -11,7 +11,7 @@ export default function Promotion() {
             spaceBetween={50}
             slidesPerView={1}
             onSlideChange={() => { }}
-            onSwiper={(swiper) => { }}
+            //onSwiper={(swiper) => { }}
             pagination={{ clickable: true }}
             modules={[Pagination]}>
             <SwiperSlide className="flex items-center justify-center">

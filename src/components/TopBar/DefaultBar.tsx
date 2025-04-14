@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 export default function DefaultTopBar() {
-    const { isCustomer, login, providerNotification } = useAppSelector(state => state.app)
+    const { isCustomer, login } = useAppSelector(state => state.app)
     const dispatch = useAppDispatch();
 
     return (
