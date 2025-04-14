@@ -97,7 +97,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             </Transition>
 
             <BottomSheet isOpen={isCheckout} showNotch={false} onClose={() => dispatch(setIsCheckOut(false))}>
-                <div className="flex items-center justify-between px-4 pb-4 pt-6 mb-2.5">
+                <div className="flex items-end justify-between px-4 pb-4 pt-6 mb-2.5">
                     {!checkPayment && <h2 className="font-semibold text-md">Checkout</h2>}
                     <button type="button" onClick={() => dispatch(setIsCheckOut(false))} >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -224,19 +224,26 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                         </>
                     )}
 
-                    <button type="button" onClick={() => {
-                        if (checkPayment) {
-                            dispatch(setIsCheckOut(false))
-                        } else {
+                    {checkPayment && (
+                        <button type="button" onClick={() => {
                             dispatch(setCustomerNotification(false))
+                            dispatch(setProviderNotification(false))
                             dispatch(setAcceptAppointment(false))
                             dispatch(setIsScheduleRequest(false))
                             dispatch(setIsCheckOut(false))
-                            dispatch(setCheckPayment(true))
-                        }
+                            dispatch(setCheckPayment(false))
+                        }} className="bg-vf-red  rounded-md text-white w-full flex items-center justify-center p-2">
+                            Close
+                        </button>
+                    )}
+
+                   {!checkPayment && (
+                     <button type="button" onClick={() => {
+                        dispatch(setCheckPayment(true))
                     }} className="bg-vf-red  rounded-md text-white w-full flex items-center justify-center p-2">
-                        {checkPayment ? 'Close' : 'Confirm'}
+                        Confirm
                     </button>
+                   )}
                 </div>
 
 
