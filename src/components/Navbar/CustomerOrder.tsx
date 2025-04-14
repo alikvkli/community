@@ -46,7 +46,7 @@ export default function CustomerOrder({ isOpen, setIsOpen }: { isOpen: boolean, 
     const handleStep = () => {
         if (step <= 4) {
             setStep((prev) => prev + 1);
-        } else if(step === 5) {
+        } else if (step === 5) {
             dispatch(setIsScheduleRequest(true));
             setIsOpen(false);
         }
@@ -69,7 +69,7 @@ export default function CustomerOrder({ isOpen, setIsOpen }: { isOpen: boolean, 
         }
         else if (step === 4) {
             selected.step4.selected ? setActive(true) : setActive(false)
-        } else if(step === 5){
+        } else if (step === 5) {
             setActive(true)
         }
         else {
@@ -108,21 +108,58 @@ export default function CustomerOrder({ isOpen, setIsOpen }: { isOpen: boolean, 
     return (
         <BottomSheet isOpen={isOpen} showNotch={false} onClose={() => setIsOpen(false)}>
 
-            <div className={classNames('flex items-center justify-between py-2 mb-2.5', {
+            <div className={classNames('', {
                 'bg-[#F4ABBF] px-4 pt-6 pb-4 !mb-0': step === 5,
                 'px-4 pb-4 pt-6': step <= 4
             })}>
-                <button type="button" onClick={() => setStep((prev) => prev - 1)} className={classNames({ 'hidden': step === 0 })}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.25 20.5L7.75 12L16.25 3.5" stroke="#0D0D0D" strokeMiterlimit="10" strokeLinecap="round" />
-                    </svg>
-                </button>
-                <h2 className="font-semibold text-md">{step === 0 ? 'What service do you need?' : step === 1 ? 'What cleaning would you like?' : step === 2 ? 'Where would you like to have cleaned?' : step === 3 ? 'Select options' : step === 4 ? 'Choose service provider' : 'Provider profile'}</h2>
-                <button type="button" onClick={() => setIsOpen(false)} >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.5 18.5L18.5 5.5M18.5 18.5L5.5 5.5" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </button>
+                <div className="flex items-center justify-between py-2 mb-2.5 ">
+                    <button type="button" onClick={() => setStep((prev) => prev - 1)} className={classNames({ 'hidden': step === 0 })}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.25 20.5L7.75 12L16.25 3.5" stroke="#0D0D0D" strokeMiterlimit="10" strokeLinecap="round" />
+                        </svg>
+                    </button>
+                    <h2 className="font-semibold text-md">{step === 0 ? 'What service do you need?' : step === 1 ? 'What cleaning would you like?' : step === 2 ? 'Where would you like to have cleaned?' : step === 3 ? 'Select options' : step === 4 ? 'Choose service provider' : 'Provider profile'}</h2>
+                    <button type="button" onClick={() => setIsOpen(false)} >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.5 18.5L18.5 5.5M18.5 18.5L5.5 5.5" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+
+                {step === 5 && (
+                    <div className="bg-[#edaabe]">
+                        <div className="flex gap-8 p-4">
+                            <div className="flex flex-col items-center justify-center">
+                                <div className="relative">
+                                    <img src={profileAvatar} />
+                                    <div className="w-9 h-9 bg-[#008A00] flex items-center justify-center rounded-full absolute bottom-3 right-4">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18.0823 5.48186C18.3752 5.18897 18.3752 4.7141 18.0823 4.4212C17.7894 4.12831 17.3146 4.12831 17.0217 4.4212L18.0823 5.48186ZM9.16985 13.3337L8.63928 13.8638L9.16961 14.3946L9.70018 13.864L9.16985 13.3337ZM5.97645 9.07638C5.68368 8.78336 5.20881 8.78316 4.91579 9.07592C4.62277 9.36869 4.62256 9.84356 4.91533 10.1366L5.97645 9.07638ZM18.3435 7.70498C18.2336 7.30562 17.8207 7.07098 17.4213 7.1809C17.022 7.29082 16.7873 7.70367 16.8973 8.10304L18.3435 7.70498ZM13.2096 17.2237L13.5136 17.9093L13.5144 17.9089L13.2096 17.2237ZM3.33651 14.2484L3.96887 13.8451L3.96869 13.8449L3.33651 14.2484ZM4.80136 4.04333L4.3085 3.47801L4.30814 3.47832L4.80136 4.04333ZM14.6287 4.54366C14.9446 4.81161 15.4179 4.77275 15.6858 4.45687C15.9537 4.14099 15.9149 3.66771 15.599 3.39977L14.6287 4.54366ZM17.0217 4.4212L8.63952 12.8034L9.70018 13.864L18.0823 5.48186L17.0217 4.4212ZM9.70041 12.8036L5.97645 9.07638L4.91533 10.1366L8.63928 13.8638L9.70041 12.8036ZM16.8973 8.10304C17.8371 11.5175 16.1374 15.1004 12.9047 16.5384L13.5144 17.9089C17.4237 16.1699 19.4805 11.8361 18.3435 7.70498L16.8973 8.10304ZM12.9055 16.5381C9.67001 17.9731 5.87217 16.8297 3.96887 13.8451L2.70415 14.6517C5.00658 18.2621 9.60067 19.6448 13.5136 17.9093L12.9055 16.5381ZM3.96869 13.8449C2.06548 10.8634 2.62816 6.93593 5.29457 4.60834L4.30814 3.47832C1.08262 6.29396 0.401819 11.0449 2.70433 14.652L3.96869 13.8449ZM5.29422 4.60865C7.96096 2.28372 11.9301 2.25453 14.6287 4.54366L15.599 3.39977C12.3341 0.630312 7.53368 0.666219 4.3085 3.47801L5.29422 4.60865Z" fill="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-center justify-center">
+                                    <p className="font-semibold text-xl">Marry</p>
+                                    <p>Company name</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div className="border-b border-[#F5638A] py-2">
+                                    <p className="text-xl font-semibold">17</p>
+                                    <p>Review</p>
+                                </div>
+                                <div className="border-b border-[#F5638A] py-2">
+                                    <p className="text-xl font-semibold">4.90</p>
+                                    <p>Raiting</p>
+                                </div>
+                                <div>
+                                    <p className="text-xl font-semibold">17</p>
+                                    <p>Number of services provided</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
             {step <= 4 && (
                 <div className="flex items-center gap-2 px-4">
@@ -445,38 +482,6 @@ export default function CustomerOrder({ isOpen, setIsOpen }: { isOpen: boolean, 
 
             {step === 5 && (
                 <div className="flex flex-col mb-[73px] pb-4">
-                    <div className="bg-[#edaabe]">
-                        <div className="flex gap-8 p-4">
-                            <div className="flex flex-col items-center justify-center">
-                                <div className="relative">
-                                    <img src={profileAvatar} />
-                                    <div className="w-9 h-9 bg-[#008A00] flex items-center justify-center rounded-full absolute bottom-3 right-4">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18.0823 5.48186C18.3752 5.18897 18.3752 4.7141 18.0823 4.4212C17.7894 4.12831 17.3146 4.12831 17.0217 4.4212L18.0823 5.48186ZM9.16985 13.3337L8.63928 13.8638L9.16961 14.3946L9.70018 13.864L9.16985 13.3337ZM5.97645 9.07638C5.68368 8.78336 5.20881 8.78316 4.91579 9.07592C4.62277 9.36869 4.62256 9.84356 4.91533 10.1366L5.97645 9.07638ZM18.3435 7.70498C18.2336 7.30562 17.8207 7.07098 17.4213 7.1809C17.022 7.29082 16.7873 7.70367 16.8973 8.10304L18.3435 7.70498ZM13.2096 17.2237L13.5136 17.9093L13.5144 17.9089L13.2096 17.2237ZM3.33651 14.2484L3.96887 13.8451L3.96869 13.8449L3.33651 14.2484ZM4.80136 4.04333L4.3085 3.47801L4.30814 3.47832L4.80136 4.04333ZM14.6287 4.54366C14.9446 4.81161 15.4179 4.77275 15.6858 4.45687C15.9537 4.14099 15.9149 3.66771 15.599 3.39977L14.6287 4.54366ZM17.0217 4.4212L8.63952 12.8034L9.70018 13.864L18.0823 5.48186L17.0217 4.4212ZM9.70041 12.8036L5.97645 9.07638L4.91533 10.1366L8.63928 13.8638L9.70041 12.8036ZM16.8973 8.10304C17.8371 11.5175 16.1374 15.1004 12.9047 16.5384L13.5144 17.9089C17.4237 16.1699 19.4805 11.8361 18.3435 7.70498L16.8973 8.10304ZM12.9055 16.5381C9.67001 17.9731 5.87217 16.8297 3.96887 13.8451L2.70415 14.6517C5.00658 18.2621 9.60067 19.6448 13.5136 17.9093L12.9055 16.5381ZM3.96869 13.8449C2.06548 10.8634 2.62816 6.93593 5.29457 4.60834L4.30814 3.47832C1.08262 6.29396 0.401819 11.0449 2.70433 14.652L3.96869 13.8449ZM5.29422 4.60865C7.96096 2.28372 11.9301 2.25453 14.6287 4.54366L15.599 3.39977C12.3341 0.630312 7.53368 0.666219 4.3085 3.47801L5.29422 4.60865Z" fill="white" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col items-center justify-center">
-                                    <p className="font-semibold text-xl">Marry</p>
-                                    <p>Company name</p>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="border-b border-[#F5638A] py-2">
-                                    <p className="text-xl font-semibold">17</p>
-                                    <p>Review</p>
-                                </div>
-                                <div className="border-b border-[#F5638A] py-2">
-                                    <p className="text-xl font-semibold">4.90</p>
-                                    <p>Raiting</p>
-                                </div>
-                                <div>
-                                    <p className="text-xl font-semibold">17</p>
-                                    <p>Number of services provided</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div className="p-4">
 
