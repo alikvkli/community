@@ -5,6 +5,8 @@ import ProfileTopBar from "./ProfileBar";
 import CategoryTopBar from "./CategoryBar";
 import DefaultTopBar from "./DefaultBar";
 import OfferTopBar from "./OfferBar";
+import NotificationBar from "./NotificationBar";
+import AvaiableTopBar from "./AvailableBar";
 
 export default function TopBar() {
     const location = useLocation();
@@ -17,8 +19,12 @@ export default function TopBar() {
                 <ProfileTopBar />
             ) : location.pathname.includes("/account") ? (
                 <AccountTopBar />
-            ) : location.pathname.includes("offer") ? (
+            ) : location.pathname.includes("/offer") ? (
                 <OfferTopBar />
+            ) : location.pathname.includes("/notification") ? (
+                <NotificationBar />
+            ) : location.pathname.includes("/available") ? (
+                <AvaiableTopBar />
             ) : (
                 <DefaultTopBar />
             )}

@@ -33,13 +33,13 @@
     body{
         font-family: 'Vodafone', sans-serif;
         font-weight: 400;
-        background-color: rgba(176, 176, 176, 0.1);
 
     }
 
     
 
     .navigation-bar{
+        border-top: 1px solid #eee;
         position:  fixed;
         bottom: 0;
         left: 0;

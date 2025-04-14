@@ -21,7 +21,7 @@ export default function RecentServices() {
                                 <p className="font-semibold text-[#262626] text-lg">{price}</p>
                                 <div className="flex items-center gap-1">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M5.43039 7.51574C5.17675 7.33181 4.83385 7.33181 4.58021 7.51574L2.44626 9.06319L3.24289 6.52827C3.33038 6.24989 3.24299 5.94526 3.0195 5.75601L0.973785 4.02371H3.47772C3.7891 4.02371 4.06399 3.82494 4.16371 3.53221L4.99247 1.0996L5.77402 3.52107L6.24985 3.3675L5.77402 3.52107C5.87032 3.81944 6.14797 4.02371 6.4637 4.02371H9.01338L6.9278 5.75095C6.69678 5.94227 6.60775 6.25558 6.70185 6.53924L7.5311 9.03908L5.43039 7.51574ZM8.22275 9.54064L8.22226 9.54028L8.22275 9.54064Z" fill="#7E7E7E" stroke="#7E7E7E" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M5.43039 7.51574C5.17675 7.33181 4.83385 7.33181 4.58021 7.51574L2.44626 9.06319L3.24289 6.52827C3.33038 6.24989 3.24299 5.94526 3.0195 5.75601L0.973785 4.02371H3.47772C3.7891 4.02371 4.06399 3.82494 4.16371 3.53221L4.99247 1.0996L5.77402 3.52107L6.24985 3.3675L5.77402 3.52107C5.87032 3.81944 6.14797 4.02371 6.4637 4.02371H9.01338L6.9278 5.75095C6.69678 5.94227 6.60775 6.25558 6.70185 6.53924L7.5311 9.03908L5.43039 7.51574ZM8.22275 9.54064L8.22226 9.54028L8.22275 9.54064Z" fill="#7E7E7E" stroke="#7E7E7E" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                     <span className="text-xs text-[#7E7E7E]">{star}</span>
                                 </div>
@@ -29,7 +29,7 @@ export default function RecentServices() {
                             </div>
                             <button>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.75 3.5L16.25 12L7.75 20.5" stroke="#E60000" stroke-miterlimit="10" stroke-linecap="round" />
+                                    <path d="M7.75 3.5L16.25 12L7.75 20.5" stroke="#E60000" strokeMiterlimit="10" strokeLinecap="round" />
                                 </svg>
                             </button>
                         </div>

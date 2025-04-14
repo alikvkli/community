@@ -2,6 +2,9 @@ import categoryImage1 from '@/images/categories/1.jpg';
 import categoryImage2 from '@/images/categories/2.jpg';
 import categoryImage3 from '@/images/categories/3.jpg';
 import categoryImage4 from '@/images/categories/4.jpg';
+import categoryImage5 from '@/images/categories/5.jpg';
+import categoryImage6 from '@/images/categories/6.jpg';
+import categoryImage7 from '@/images/categories/7.jpg';
 
 
 import interestedServices1 from '@/images/services/service_1.png';
@@ -26,8 +29,8 @@ export const categoryListData = [
     },
     {
         id: 3,
-        name: "Repair",
-        slug: 'repair',
+        name: "Assembly",
+        slug: 'assembly',
         image: categoryImage3
     },
     {
@@ -35,6 +38,24 @@ export const categoryListData = [
         name: "Catering",
         slug: 'catering',
         image: categoryImage4
+    },
+    {
+        id: 5,
+        name: "Repair",
+        slug: 'repair',
+        image: categoryImage5
+    },
+    {
+        id: 6,
+        name: "Electrical",
+        slug: 'electrical',
+        image: categoryImage6
+    },
+    {
+        id: 5,
+        name: "Technical Service",
+        slug: 'technical-service',
+        image: categoryImage7
     }
 ]
 

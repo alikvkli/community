@@ -33,7 +33,7 @@ export default function OfferPage() {
                                     <button className="text-vf-red flex items-center justify-center gap-2">
                                         Learn more
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M6.45825 2.91699L13.5416 10.0003L6.45825 17.0837" stroke="#E60000" stroke-miterlimit="10" stroke-linecap="round" />
+                                            <path d="M6.45825 2.91699L13.5416 10.0003L6.45825 17.0837" stroke="#E60000" strokeMiterlimit="10" strokeLinecap="round" />
                                         </svg>
 
                                     </button>

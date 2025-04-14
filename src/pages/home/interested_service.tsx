@@ -10,7 +10,7 @@ export default function InterestedServices() {
                 <button className="text-vf-red underline flex items-center gap-2">
                     All
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.16675 2.33301L10.8334 7.99967L5.16675 13.6663" stroke="#E60000" stroke-miterlimit="10" stroke-linecap="round" />
+                        <path d="M5.16675 2.33301L10.8334 7.99967L5.16675 13.6663" stroke="#E60000" strokeMiterlimit="10" strokeLinecap="round" />
                     </svg>
                 </button>
             </div>
@@ -21,7 +21,7 @@ export default function InterestedServices() {
                         <p>{service.name}</p>
                         <button className="bg-vf-red rounded-full flex items-center justify-center w-8 h-8">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.1459 10.0003H3.85425M10.0001 3.85449V16.1462" stroke="white" stroke-miterlimit="10" stroke-linecap="round" />
+                                <path d="M16.1459 10.0003H3.85425M10.0001 3.85449V16.1462" stroke="white" strokeMiterlimit="10" strokeLinecap="round" />
                             </svg>
                         </button>
                     </div>

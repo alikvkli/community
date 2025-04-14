@@ -5,6 +5,8 @@ import CategoryPage from "@/pages/category"
 import ProfilePage from "@/pages/profile"
 import Account from "@/pages/account"
 import OfferPage from "@/pages/offer"
+import NotificationPage from "@/pages/notification"
+import AvailablePage from "@/pages/available"
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +32,14 @@ export const router = createBrowserRouter([
             {
                 path: "offer",
                 element: <OfferPage />
+            },
+            {
+                path: "notification",
+                element: <NotificationPage />
+            },
+            {
+                path: "available",
+                element: <AvailablePage />
             }
         ]
     }
