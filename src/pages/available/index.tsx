@@ -100,7 +100,7 @@ export default function AvailablePage() {
                 </div>
             </section>
 
-            <section className="px-4 pt-6 pb-4">
+            <section className="px-4 pt-6 pb-4 mb-[77px]">
                 <p className="font-semibold text-lg">House cleaning</p>
                 <p className="text-sm">Deep cleaning</p>
 

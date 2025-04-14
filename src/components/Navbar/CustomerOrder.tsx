@@ -109,7 +109,7 @@ export default function CustomerOrder({ isOpen, setIsOpen }: { isOpen: boolean, 
         <BottomSheet isOpen={isOpen} showNotch={false} onClose={() => setIsOpen(false)}>
 
             <div className={classNames('flex items-center justify-between py-2 mb-2.5', {
-                'bg-[#F4ABBF] px-4 pt-6 pb-4 mb-0': step === 5,
+                'bg-[#F4ABBF] px-4 pt-6 pb-4 !mb-0': step === 5,
                 'px-4 pb-4 pt-6': step <= 4
             })}>
                 <button type="button" onClick={() => setStep((prev) => prev - 1)} className={classNames({ 'hidden': step === 0 })}>
