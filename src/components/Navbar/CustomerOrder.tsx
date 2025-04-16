@@ -17,9 +17,9 @@ import { categoryData } from "@/pages/category/mock";
 import { useAppDispatch } from "@/hooks";
 import { setIsScheduleRequest } from "@/features/app";
 
-export default function CustomerOrder({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (isOpen: boolean) => void }) {
+export default function CustomerOrder({ isOpen, setIsOpen, defaultStep }: { isOpen: boolean, setIsOpen: (isOpen: boolean) => void, defaultStep?: number }) {
     const dispatch = useAppDispatch();
-    const [step, setStep] = useState(0);
+    const [step, setStep] = useState(defaultStep || 0);
     const [selected, setSelected] = useState({
         step0: {
             selected: false,
@@ -42,6 +42,15 @@ export default function CustomerOrder({ isOpen, setIsOpen }: { isOpen: boolean, 
             value: ""
         }
     });
+
+    useEffect(() => {
+        if (defaultStep && defaultStep === 1) {
+            setSelected((prev) => {
+                return { ...prev, step0: { selected: true, value: 'Cleaning' } };
+            })
+            setStep(1);
+        }
+    }, [defaultStep])
 
     const handleStep = () => {
         if (step <= 4) {
@@ -461,14 +470,8 @@ export default function CustomerOrder({ isOpen, setIsOpen }: { isOpen: boolean, 
                                                 <span className="ml-1 text-[14px]">{star}</span>
                                                 <span className="ml-1 text-[#7E7E7E] text-[14px]">({comment})</span>
                                             </p>
-                                            <button onClick={() => alert('favoriye eklendi')}>
-                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M11.9991 21.5007C11.0509 20.9103 10.1491 20.2484 9.30162 19.5207C6.99787 17.5919 4.78162 15.2832 3.47287 12.5319C2.24537 9.95318 1.88912 6.00068 4.14537 3.86568C4.7073 3.33143 5.38662 2.93633 6.12884 2.71207C6.87106 2.48781 7.65552 2.44063 8.41926 2.57432C9.18301 2.70801 9.90479 3.01885 10.5267 3.4819C11.1486 3.94495 11.6533 4.54732 12.0004 5.24068M12.0004 21.4994C12.9482 20.909 13.8496 20.2471 14.6966 19.5194C17.0004 17.5907 19.2166 15.2819 20.5266 12.5307C21.7554 9.95318 22.1066 6.00068 19.8566 3.86568C19.2948 3.33143 18.6156 2.93632 17.8735 2.71206C17.1313 2.48779 16.347 2.44061 15.5833 2.57431C14.8196 2.70801 14.0979 3.01886 13.4761 3.48192C12.8544 3.94497 12.3498 4.54734 12.0029 5.24068" stroke="#BEBEBE" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" />
-                                                </svg>
-
-                                            </button>
                                         </div>
-                                        <p className="mt-2">{description}</p>
+                                        <p className="mt-2 text-left">{description}</p>
                                         <div className="flex items-center justify-end"><span className="text-[#7E7E7E] text-[14px]">from</span><span className="ml-1 text-[#0D0D0D] text-[16px] font-semibold">{price}</span></div>
 
                                     </div>

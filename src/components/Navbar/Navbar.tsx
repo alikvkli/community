@@ -14,6 +14,7 @@ export default function Navbar() {
     const { login, isCustomer } = useAppSelector(state => state.app)
     const [isOpen, setIsOpen] = useState(false);
     const [isProvider, setIsProvider] = useState(false);
+    const [defaultStep, setDefaultStep] = useState(0);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -28,11 +29,16 @@ export default function Navbar() {
         navigate("/");
     }
 
+    const handleRequest = () => {
+        setIsOpen(true)
+        setDefaultStep(1)
+    }
+
     return (
         <>
             {location.pathname.includes('profil') ? (
                 <div className="p-4 fixed bottom-0 left-0 w-full bg-white border-t border-[#E5E5E5]">
-                    <button className="bg-vf-red  rounded-md text-white w-full flex items-center justify-center p-2">Request service</button>
+                    <button type="button" onClick={() => handleRequest()} className="bg-vf-red  rounded-md text-white w-full flex items-center justify-center p-2">Request service</button>
                 </div>
             ) : location.pathname.includes("available") ? (
                 <div className="p-4 fixed bottom-0 left-0 w-full bg-white border-t border-[#E5E5E5] flex gap-4">
@@ -82,14 +88,14 @@ export default function Navbar() {
                         <p>Offers</p>
                     </Link>
                     <Link to="/account" className="flex flex-col items-center justify-center ">
-                        <img className="w-6 h-6 object-cover rounded-full" src={isCustomer ? customerImage : providerImage} alt={""}/>
+                        <img className="w-6 h-6 object-cover rounded-full" src={isCustomer ? customerImage : providerImage} />
                         <p>Account</p>
                     </Link>
 
                 </div>
             )
             }
-            <CustomerOrder isOpen={isOpen} setIsOpen={setIsOpen} />
+            <CustomerOrder defaultStep={defaultStep} isOpen={isOpen} setIsOpen={setIsOpen} />
             <ProviderProfile isOpen={isProvider} setIsOpen={setIsProvider} />
         </>
     )

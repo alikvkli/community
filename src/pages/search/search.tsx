@@ -4,18 +4,21 @@ import PublicLayout from "@/layouts/PublicLayout";
 import { categoryListData, interestedServiceData, youMayAlsoLikeData } from "@/pages/home/mock";
 import { useEffect, useState } from "react";
 import { clsx } from "clsx";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { setSearchText } from "@/features/app";
 
 const useQuery = () => new URLSearchParams(useLocation().search);
 
 const Search = () => {
     const query = useQuery().get("query") || "";
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const [searchText, setSearchText] = useState(query);
     const [selectedTab, setSelectedTab] = useState<"categories" | "interests">("categories");
+    const { searchText } = useAppSelector(state => state.app);
 
     useEffect(() => {
-        setSearchText(query);
+        dispatch(setSearchText(query))
     }, [query]);
 
     const filteredCategoryList = categoryListData.filter(item =>
@@ -25,6 +28,12 @@ const Search = () => {
     const filteredInterestList = interestedServiceData.filter(item =>
         item.name.toLowerCase().includes(searchText.toLowerCase())
     );
+
+    useEffect(() => {
+        if (searchText.length === 0) {
+            setSelectedTab("categories");
+        }
+    }, [searchText])
 
     return (
         <PublicLayout>
@@ -53,9 +62,17 @@ const Search = () => {
                 <div className="grid grid-cols-4 gap-6">
                     {selectedTab === "categories" && (
                         <>
-                            <div className="col-span-4 w-full text-left text-lg font-semibold text-[#0D0D0D] mb-2">
-                                Your Categories
-                            </div>
+                            {filteredCategoryList.length > 0 && (
+                                <div className="col-span-4 w-full text-left text-lg font-semibold text-[#0D0D0D] mb-2">
+                                    Your Categories
+                                </div>
+                            )}
+
+                            {filteredCategoryList.length === 0 && (
+                                <div className="col-span-4 w-full text-left text-lg text-[#0D0D0D] mb-2">
+                                    No Categories Found
+                                </div>
+                            )}
                             {filteredCategoryList.map((item) => (
                                 <div
                                     key={`category-${item.id}`}
@@ -86,9 +103,16 @@ const Search = () => {
 
                     {selectedTab === "interests" && (
                         <>
-                            <div className="col-span-4 w-full text-left text-lg font-semibold text-[#0D0D0D] mb-2">
-                                Your Interests
-                            </div>
+                            {filteredInterestList.length > 0 && (
+                                <div className="col-span-4 w-full text-left text-lg font-semibold text-[#0D0D0D] mb-2">
+                                    Your Interests
+                                </div>
+                            )}
+                            {filteredInterestList.length === 0 && (
+                                <div className="col-span-4 w-full text-left text-lg text-[#0D0D0D] mb-2">
+                                    No Interests Found
+                                </div>
+                            )}
                             {filteredInterestList.map((item) => (
                                 <div
                                     key={`interest-${item.id}`}

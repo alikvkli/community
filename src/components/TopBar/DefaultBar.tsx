@@ -1,28 +1,17 @@
 import { useAppDispatch, useAppSelector } from "@/hooks"
 import classNames from "classnames";
-import { setCustomer, setCustomerNotification, setLogin } from "@/features/app";
+import { setCustomer, setCustomerNotification, setLogin, setSearchText } from "@/features/app";
 import CommunityIcon from "../Icon/CommunityIcon";
 import LocationIcon from "../Icon/LocationIcon";
 import { IoIosSearch } from "react-icons/io"
-import {Link, useNavigate, useSearchParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 
 export default function DefaultTopBar() {
-    const { isCustomer, login } = useAppSelector(state => state.app)
+    const { isCustomer, login, searchText } = useAppSelector(state => state.app)
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const [searchParams, setSearchParams] = useSearchParams();
-
-    const [searchText, setSearchText] = useState(searchParams.get("query") || "");
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setSearchParams({ query: searchText });
-        });
-
-        return () => clearTimeout(timeout);
-    }, [searchText, setSearchParams]);
 
     return (
         <div className="p-4">
@@ -93,13 +82,18 @@ export default function DefaultTopBar() {
                     className="flex-1 outline-none pl-2"
                     placeholder="Describe the service you'd like"
                     value={searchText}
-                    onChange={(e) => setSearchText(e.target.value)}
-                    onClick={() => navigate(`/search?query=${encodeURIComponent(searchText)}`)}
+                    onChange={(e) => dispatch(setSearchText(e.target.value))}
                 />
+                {searchText.length > 0 && (
+                    <button className="mr-1" onClick={() => {
+                        dispatch(setSearchText(""))
+                    }}>
+                        <IoCloseCircleOutline size={18} />
+                    </button>
+                )}
                 <button
                     onClick={() => navigate(`/search?query=${encodeURIComponent(searchText)}`)}
-                    className="bg-vf-red p-2 rounded-xl flex items-center justify-center"
-                >
+                    className="bg-vf-red p-2 rounded-xl flex items-center justify-center">
                     <IoIosSearch className="w-5 h-5" color="white" />
                 </button>
             </div>

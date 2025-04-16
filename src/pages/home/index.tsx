@@ -12,10 +12,6 @@ import FeaturedServices from "./featured_service";
 import WhatsNew from "./whats_new";
 import GetStarted from "./get_started";
 
-
-
-
-
 export default function HomePage() {
 
   const { isCustomer } = useAppSelector(state => state.app);

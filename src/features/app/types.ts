@@ -6,5 +6,6 @@ export interface InitialStateProps {
     providerNotification: boolean,
     acceptAppointment: boolean,
     isCheckout: boolean,
-    checkPayment: boolean
+    checkPayment: boolean,
+    searchText: string
 }

@@ -10,7 +10,8 @@ const initialState: InitialStateProps = {
     providerNotification: false,
     acceptAppointment: false,
     isCheckout: false,
-    checkPayment : false
+    checkPayment : false,
+    searchText:""
 }
 
 const appSlice = createSlice({
@@ -43,6 +44,9 @@ const appSlice = createSlice({
         },
         setCheckPayment: (state, action: PayloadAction<InitialStateProps['checkPayment']>) => {
             state.checkPayment = action.payload;
+        },
+        setSearchText: (state, action: PayloadAction<InitialStateProps['searchText']>) => {
+            state.searchText = action.payload;
         }
     }
 });
@@ -55,7 +59,8 @@ export const {
     setProviderNotification,
     setAcceptAppointment,
     setIsCheckOut,
-    setCheckPayment
+    setCheckPayment,
+    setSearchText
 } = appSlice.actions;
 
 export default appSlice.reducer;
