@@ -52,7 +52,7 @@ export const categoryListData = [
         image: categoryImage6
     },
     {
-        id: 5,
+        id: 7,
         name: "Technical Service",
         slug: 'technical-service',
         image: categoryImage7
@@ -94,18 +94,44 @@ export const interestedServiceData = [
     {
         id: 1,
         name: 'Catering',
-        image: interestedServices1
+        image: interestedServices1,
+        slug: 'catering'
     },
     {
         id: 2,
         name: 'Cleaning',
-        image: interestedServices2
+        image: interestedServices2,
+        slug: 'cleaning'
     },
     {
         id: 3,
         name: 'Assembly',
-        image: interestedServices3
+        image: interestedServices3,
+        slug: 'assembly'
     },
+]
+
+export const youMayAlsoLikeData = [
+    {
+        id: 1,
+        name: 'Repair',
+        image: categoryImage5
+    },
+    {
+        id: 2,
+        name: 'Technical Service',
+        image: categoryImage7
+    },
+    {
+        id: 3,
+        name: 'Dressmaker',
+        image: categoryImage2
+    },
+    {
+        id: 4,
+        name: 'Electrical',
+        image: categoryImage6
+    }
 ]
 
 

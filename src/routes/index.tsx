@@ -7,6 +7,7 @@ import Account from "@/pages/account"
 import OfferPage from "@/pages/offer"
 import NotificationPage from "@/pages/notification"
 import AvailablePage from "@/pages/available"
+import Search from "@/pages/search/search.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
             {
                 path: "available",
                 element: <AvailablePage />
+            },
+            {
+                path: "search",
+                element : <Search />
             }
         ]
     }

@@ -4,12 +4,25 @@ import { setCustomer, setCustomerNotification, setLogin } from "@/features/app";
 import CommunityIcon from "../Icon/CommunityIcon";
 import LocationIcon from "../Icon/LocationIcon";
 import { IoIosSearch } from "react-icons/io"
-import { Link } from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 
 export default function DefaultTopBar() {
     const { isCustomer, login } = useAppSelector(state => state.app)
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const [searchText, setSearchText] = useState(searchParams.get("query") || "");
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setSearchParams({ query: searchText });
+        });
+
+        return () => clearTimeout(timeout);
+    }, [searchText, setSearchParams]);
 
     return (
         <div className="p-4">
@@ -70,16 +83,26 @@ export default function DefaultTopBar() {
 
             </div >
             {/* TOP BAR */}
-            < div className="bg-white flex rounded-2xl px-3 py-4 mt-3" >
+            <div className="bg-white flex rounded-2xl px-3 py-4 mt-3">
                 <div className="flex items-center gap-1 border-r-[1px] border-[#E5E7EB] pr-[8px]">
                     <LocationIcon />
                     <p className="font-bold">Istanbul</p>
                 </div>
-                <input type="text" className="flex-1 outline-none pl-2" placeholder="Describe the service you'd like" />
-                <button className="bg-vf-red p-2 rounded-xl flex items-center justify-center">
+                <input
+                    type="text"
+                    className="flex-1 outline-none pl-2"
+                    placeholder="Describe the service you'd like"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    onClick={() => navigate(`/search?query=${encodeURIComponent(searchText)}`)}
+                />
+                <button
+                    onClick={() => navigate(`/search?query=${encodeURIComponent(searchText)}`)}
+                    className="bg-vf-red p-2 rounded-xl flex items-center justify-center"
+                >
                     <IoIosSearch className="w-5 h-5" color="white" />
                 </button>
-            </div >
+            </div>
         </div >
     )
 }

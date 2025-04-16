@@ -8,15 +8,18 @@ import providerImage from "@/images/provider.png";
 import { useState } from "react";
 import CustomerOrder from "./CustomerOrder";
 import { setAcceptAppointment, setCustomerNotification } from "@/features/app";
+import ProviderProfile from "./ProviderProfile";
 
 export default function Navbar() {
     const { login, isCustomer } = useAppSelector(state => state.app)
     const [isOpen, setIsOpen] = useState(false);
+    const [isProvider, setIsProvider] = useState(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const handleClick = () => {
         if (isCustomer) setIsOpen(true)
+        if (!isCustomer) setIsProvider(true);
     }
 
     const acceptAppointment = () => {
@@ -79,7 +82,7 @@ export default function Navbar() {
                         <p>Offers</p>
                     </Link>
                     <Link to="/account" className="flex flex-col items-center justify-center ">
-                        <img className="w-6 h-6 object-cover rounded-full" src={isCustomer ? customerImage : providerImage} />
+                        <img className="w-6 h-6 object-cover rounded-full" src={isCustomer ? customerImage : providerImage} alt={""}/>
                         <p>Account</p>
                     </Link>
 
@@ -87,6 +90,7 @@ export default function Navbar() {
             )
             }
             <CustomerOrder isOpen={isOpen} setIsOpen={setIsOpen} />
+            <ProviderProfile isOpen={isProvider} setIsOpen={setIsProvider} />
         </>
     )
 }

@@ -3,7 +3,7 @@ import { InitialStateProps } from "./types"
 
 
 const initialState: InitialStateProps = {
-    login: false,
+    login: true,
     isCustomer: true,
     isScheduleRequest: false,
     customerNotification: false,
