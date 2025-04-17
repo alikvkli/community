@@ -1,7 +1,11 @@
+import { setProfileIsFavorite, setSystemNotification } from "@/features/app";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { useNavigate } from "react-router-dom"
 
 export default function ProfileTopBar() {
+    const { profileIsFavorite } = useAppSelector((state) => state.app);
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     return (
         <div className="flex items-center justify-between bg-[#edaabe] p-4">
@@ -13,13 +17,22 @@ export default function ProfileTopBar() {
 
 
             <div className="flex items-center gap-4">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.01 5.23013C12.71 3.83013 14.05 2.83013 15.6 2.56013C17.14 2.29013 18.73 2.77013 19.87 3.85013C22.12 5.99013 21.77 9.94013 20.54 12.5201C19.23 15.2701 17.01 17.5801 14.71 19.5101C13.86 20.2401 12.95 20.9001 12 21.4901C11.05 20.9001 10.17 20.2501 9.32002 19.5201C7.02002 17.5901 4.80002 15.2801 3.49002 12.5301C2.26002 9.95013 1.90002 6.00013 4.16002 3.86013C5.30002 2.78013 6.89002 2.30013 8.43002 2.57013C9.98002 2.84013 11.31 3.83013 12.01 5.23013Z" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <button type="button" onClick={() => dispatch(setProfileIsFavorite(!profileIsFavorite))}>
+                    {profileIsFavorite ? (
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.1998 3.50046C19.6339 2.96234 18.9592 2.55195 18.2211 2.29702C17.483 2.04208 16.6988 1.94854 15.9214 2.02272C15.1441 2.0969 14.3917 2.33707 13.7152 2.727C13.0386 3.11693 12.4536 3.64753 11.9998 4.28296C11.9048 4.15046 11.8035 4.02296 11.6985 3.90046C11.189 3.30463 10.5564 2.82626 9.84432 2.49827C9.13223 2.17027 8.35753 2.00044 7.57353 2.00046C6.1701 1.99375 4.81873 2.53143 3.80353 3.50046C1.45978 5.72546 1.63728 9.83546 3.02228 12.7505C4.17728 15.1755 6.12603 17.5167 8.98228 19.908C9.84863 20.6532 10.7714 21.3302 11.7423 21.933C11.8204 21.9783 11.9094 22.0016 11.9998 22.0005C12.091 22.0004 12.1805 21.9753 12.2585 21.928C13.2288 21.3249 14.1511 20.6479 15.0173 19.903C17.8748 17.5117 19.8273 15.1705 20.981 12.7505C22.3673 9.83546 22.5435 5.72546 20.1998 3.50046Z" fill="#E60000" />
+                        </svg>
+
+                    ) : (
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.01 5.23013C12.71 3.83013 14.05 2.83013 15.6 2.56013C17.14 2.29013 18.73 2.77013 19.87 3.85013C22.12 5.99013 21.77 9.94013 20.54 12.5201C19.23 15.2701 17.01 17.5801 14.71 19.5101C13.86 20.2401 12.95 20.9001 12 21.4901C11.05 20.9001 10.17 20.2501 9.32002 19.5201C7.02002 17.5901 4.80002 15.2801 3.49002 12.5301C2.26002 9.95013 1.90002 6.00013 4.16002 3.86013C5.30002 2.78013 6.89002 2.30013 8.43002 2.57013C9.98002 2.84013 11.31 3.83013 12.01 5.23013Z" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    )}
+                </button>
 
 
                 <Menu>
-                    <MenuButton>
+                    <MenuButton >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.5 12C6.5 12.8281 5.82812 13.5 5 13.5C4.17188 13.5 3.5 12.8281 3.5 12C3.5 11.1719 4.17188 10.5 5 10.5C5.82812 10.5 6.5 11.1719 6.5 12Z" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M13.5 12C13.5 12.8281 12.8281 13.5 12 13.5C11.1719 13.5 10.5 12.8281 10.5 12C10.5 11.1719 11.1719 10.5 12 10.5C12.8281 10.5 13.5 11.1719 13.5 12Z" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
@@ -28,16 +41,15 @@ export default function ProfileTopBar() {
                     </MenuButton>
                     <MenuItems anchor="bottom" className="bg-white p-3 rounded-md w-[196px]">
                         <MenuItem>
-                            <a className="flex items-center justify-between pb-4 data-[focus]:bg-blue-100" href="/settings">
+                            <button type="button" onClick={() => dispatch(setSystemNotification(true))} className="flex w-full items-center justify-between pb-4 data-[focus]:bg-blue-100">
                                 Share service
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M9.99992 4.66504V14.5804M9.99992 4.66504L7.29159 7.58171M9.99992 4.66504L12.7083 7.58171M17.9368 13.7503V16.2503C17.9368 16.6924 17.7613 17.1163 17.4487 17.4288C17.1361 17.7414 16.7122 17.917 16.2702 17.917H3.77018C3.32815 17.917 2.90423 17.7414 2.59167 17.4288C2.27911 17.1163 2.10352 16.6924 2.10352 16.2503V13.7503" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-
-                            </a>
+                            </button>
                         </MenuItem>
                         <MenuItem>
-                            <a className="flex items-center justify-between border-t-[1px] pt-4 data-[focus]:bg-blue-100" href="/support">
+                            <button type="button" onClick={() => dispatch(setSystemNotification(true))} className="flex w-full items-center justify-between border-t-[1px] pt-4 data-[focus]:bg-blue-100">
                                 Report an issue
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_141_10679)">
@@ -50,7 +62,7 @@ export default function ProfileTopBar() {
                                     </defs>
                                 </svg>
 
-                            </a>
+                            </button>
                         </MenuItem>
                     </MenuItems>
                 </Menu>

@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar/Navbar";
 import TopBar from "@/components/TopBar/TopBar";
-import { setAcceptAppointment, setCheckPayment, setCustomerNotification, setIsCheckOut, setIsScheduleRequest, setProviderNotification } from "@/features/app";
+import { setAcceptAppointment, setCheckPayment, setCustomerNotification, setIsCheckOut, setIsScheduleRequest, setProviderNotification, setSystemNotification } from "@/features/app";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 
 import communityLogo from '@/images/logo.png';
@@ -10,10 +10,11 @@ import { useNavigate } from "react-router-dom";
 import BottomSheet from "@/components/BottomSheet";
 import vpay from "@/images/vpay.png"
 import mastercard from "@/images/mastercard.png"
+import { useEffect } from "react";
 
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
-    const { login, customerNotification, providerNotification, isCustomer, acceptAppointment, isCheckout, checkPayment } = useAppSelector(state => state.app)
+    const { login, customerNotification, providerNotification, isCustomer, acceptAppointment, isCheckout, checkPayment, systemNotification } = useAppSelector(state => state.app)
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -26,11 +27,50 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         }
     }
 
+    useEffect(() => {
+        if (systemNotification) {
+            setTimeout(() => {
+                dispatch(setSystemNotification(false))
+            }, 2000)
+        }
+    }, [systemNotification])
+
     return (
         <main>
             <TopBar />
             {children}
             {login && <Navbar />}
+            <Transition
+                show={systemNotification}
+                enter="transition ease-out duration-300 transfrom"
+                enterFrom="translate-x-full"
+                enterTo="translate-x-0"
+                leave="transition ease-in duration-200 transform"
+                leaveFrom="translate-x-0"
+                leaveTo="translate-x-full">
+                <div className="fixed top-0 z-50 left-0 right-0 p-4" onClick={() => dispatch(setSystemNotification(false))}>
+                    <div className="bg-[#25282B] rounded-lg p-4">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-start  gap-1">
+                                <img src={communityLogo} className="object-cover rounded-full w-[38px] h-[38px]" />
+                                <div className="flex flex-col">
+                                    <p className="text-white">CommUnity</p>
+                                    <p className="text-white text-sm">
+                                        This feature is not available in the demo version. Thank you for your understanding.
+                                    </p>
+                                </div>
+
+                            </div>
+                            <button type="button" onClick={() => dispatch(setSystemNotification(false))}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.75 3.5L16.25 12L7.75 20.5" stroke="white" strokeMiterlimit="10" strokeLinecap="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </Transition>
 
             <Transition
                 show={customerNotification}
@@ -40,7 +80,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                 leave="transition ease-in duration-200 transform"
                 leaveFrom="translate-y-0"
                 leaveTo="translate-y-full">
-                <div className="fixed bottom-[87px] z-10 left-0 right-0 p-4">
+                <div className="fixed bottom-[87px] z-10 left-0 right-0 p-4" onClick={() => handleNotification()}>
                     <div className="bg-[#25282B] rounded-lg p-4">
                         <div className="flex items-center justify-between">
                             <div className="flex items-start  gap-1">
@@ -73,7 +113,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                 leave="transition ease-in duration-200 transform"
                 leaveFrom="translate-y-0"
                 leaveTo="translate-y-full">
-                <div className="fixed bottom-[87px] z-10 left-0 right-0 p-4">
+                <div className="fixed bottom-[87px] z-10 left-0 right-0 p-4" onClick={() => handleNotification()}>
                     <div className="bg-[#25282B] rounded-lg p-4">
                         <div className="flex items-center justify-between">
                             <div className="flex items-start  gap-1">
@@ -237,13 +277,13 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                         </button>
                     )}
 
-                   {!checkPayment && (
-                     <button type="button" onClick={() => {
-                        dispatch(setCheckPayment(true))
-                    }} className="bg-vf-red  rounded-md text-white w-full flex items-center justify-center p-2">
-                        Confirm
-                    </button>
-                   )}
+                    {!checkPayment && (
+                        <button type="button" onClick={() => {
+                            dispatch(setCheckPayment(true))
+                        }} className="bg-vf-red  rounded-md text-white w-full flex items-center justify-center p-2">
+                            Confirm
+                        </button>
+                    )}
                 </div>
 
 

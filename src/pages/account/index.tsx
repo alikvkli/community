@@ -2,11 +2,13 @@ import PublicLayout from "@/layouts/PublicLayout";
 import customerImage from "@/images/customer.png";
 import providerImage from "@/images/provider.png";
 import premiumImage from "@/images/premium.png";
-import { useAppSelector } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { customerSettings, providerSettings } from "./mock";
+import { setSystemNotification } from "@/features/app";
 
 export default function Account() {
     const { isCustomer } = useAppSelector(state => state.app)
+    const dispatch = useAppDispatch();
     return (
         <PublicLayout>
             <section className="flex items-center justify-center w-full mt-6">
@@ -50,8 +52,8 @@ export default function Account() {
                                             <path d="M1.74854 6.67523L6.07604 5.96023L7.93937 1.99023L9.95687 5.8844L14.3085 6.43023L11.2285 9.5519L12.0535 13.8594L8.1327 11.8944L4.29187 14.0102L4.94854 9.6744L1.74854 6.67523Z" fill="url(#paint0_linear_317_9225)" stroke="#00697C" strokeLinecap="round" strokeLinejoin="round" />
                                             <defs>
                                                 <linearGradient id="paint0_linear_317_9225" x1="2.00024" y1="8.00024" x2="8.00024" y2="8.00024" gradientUnits="userSpaceOnUse">
-                                                    <stop offset="0.9999" stop-color="#00697C" />
-                                                    <stop offset="1" stop-color="#00697C" stop-opacity="0" />
+                                                    <stop offset="0.9999" stopColor="#00697C" />
+                                                    <stop offset="1" stopColor="#00697C" stopOpacity="0" />
                                                 </linearGradient>
                                             </defs>
                                         </svg>
@@ -99,7 +101,7 @@ export default function Account() {
                 {isCustomer ? (
                     <div className="flex flex-col gap-4">
                         {customerSettings.map(({ title, description, icon }, key) => (
-                            <div key={key} className="flex items-center justify-between border-b-[1px] border-[#BEBEBE] pb-4">
+                            <div key={key} className="flex items-center justify-between border-b-[1px] border-[#BEBEBE] pb-4" onClick={() => dispatch(setSystemNotification(true))}>
                                 <div className="flex items-start gap-4">
                                     {icon}
                                     <div className="flex flex-col">
@@ -107,7 +109,7 @@ export default function Account() {
                                         <p className="text-sm">{description}</p>
                                     </div>
                                 </div>
-                                <button>
+                                <button type="button" onClick={() => dispatch(setSystemNotification(true))}>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7.75 3.5L16.25 12L7.75 20.5" stroke="#E60000" strokeMiterlimit="10" strokeLinecap="round" />
                                     </svg>
@@ -119,13 +121,13 @@ export default function Account() {
                 ) : (
                     <div className="flex flex-col gap-4">
                         {providerSettings.map(({ title, icon }, key) => (
-                            <div key={key} className="flex items-center justify-between border-b-[1px] border-[#BEBEBE] pb-4">
+                            <div key={key} className="flex items-center justify-between border-b-[1px] border-[#BEBEBE] pb-4" onClick={() => dispatch(setSystemNotification(true))}>
                                 <div className="flex items-start gap-4">
                                     {icon}
                                     <p>{title}</p>
 
                                 </div>
-                                <button>
+                                <button type="button" onClick={() => dispatch(setSystemNotification(true))}>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7.75 3.5L16.25 12L7.75 20.5" stroke="#E60000" strokeMiterlimit="10" strokeLinecap="round" />
                                     </svg>

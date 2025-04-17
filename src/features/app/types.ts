@@ -7,5 +7,10 @@ export interface InitialStateProps {
     acceptAppointment: boolean,
     isCheckout: boolean,
     checkPayment: boolean,
-    searchText: string
+    searchText: string,
+    isProviderModal: boolean,
+    isCustomerModal: boolean,
+    isProviderProfileDone: boolean,
+    profileIsFavorite: boolean,
+    systemNotification: boolean
 }

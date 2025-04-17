@@ -1,7 +1,10 @@
+import { setSystemNotification } from "@/features/app";
+import { useAppDispatch } from "@/hooks";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function NotificationBar() {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     return (
         <div className="flex items-center bg-white justify-between p-4">
 
@@ -14,7 +17,7 @@ export default function NotificationBar() {
             <p className="text-[18px]">Notifications</p>
 
             <div className="flex items-center gap-2">
-                <button type="button">
+                <button type="button" onClick={() => dispatch(setSystemNotification(true))}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.5 5.4668V20.4668M7.5 20.4668L11.5675 16.1493M7.5 20.4668L3.46875 16.1855M16.5 18.4668V3.4668M12.4338 7.7843L16.5013 3.4668L20.5325 7.74805" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>

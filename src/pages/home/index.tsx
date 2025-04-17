@@ -14,12 +14,12 @@ import GetStarted from "./get_started";
 
 export default function HomePage() {
 
-  const { isCustomer } = useAppSelector(state => state.app);
+  const { isCustomer, isProviderProfileDone } = useAppSelector(state => state.app);
   return (
     <PublicLayout>
 
       {/* Get started */}
-      {!isCustomer && <GetStarted />}
+      {!isCustomer && !isProviderProfileDone && <GetStarted />}
       {/* Get started */}
 
       {/*Insights */}

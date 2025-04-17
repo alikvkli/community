@@ -3,7 +3,7 @@ import providerImage from "@/images/provider.png"
 import profileImage1 from "@/images/profile_1.png"
 import profileImage2 from "@/images/profile_2.jpg"
 import { useAppDispatch, useAppSelector } from "@/hooks"
-import { setIsCheckOut } from "@/features/app"
+import { setIsCheckOut, setSystemNotification } from "@/features/app"
 
 export default function NotificationPage() {
     const { isScheduleRequest, acceptAppointment, isCustomer } = useAppSelector(state => state.app);
@@ -65,7 +65,7 @@ export default function NotificationPage() {
                                 </div>
                                 <div className="flex flex-col items-center gap-1">
                                     <p className="text-sm text-[#7E7E7E]">2m</p>
-                                    <button type="button">
+                                    <button type="button" onClick={() => dispatch(setSystemNotification(true))}>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M6.5 12C6.5 12.8281 5.82812 13.5 5 13.5C4.17188 13.5 3.5 12.8281 3.5 12C3.5 11.1719 4.17188 10.5 5 10.5C5.82812 10.5 6.5 11.1719 6.5 12Z" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
                                             <path d="M13.5 12C13.5 12.8281 12.8281 13.5 12 13.5C11.1719 13.5 10.5 12.8281 10.5 12C10.5 11.1719 11.1719 10.5 12 10.5C12.8281 10.5 13.5 11.1719 13.5 12Z" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
@@ -94,7 +94,7 @@ export default function NotificationPage() {
                         </div>
                         <div className="flex flex-col items-center gap-1">
                             <p className="text-sm text-[#7E7E7E]">8h</p>
-                            <button type="button">
+                            <button type="button" onClick={() => dispatch(setSystemNotification(true))}>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6.5 12C6.5 12.8281 5.82812 13.5 5 13.5C4.17188 13.5 3.5 12.8281 3.5 12C3.5 11.1719 4.17188 10.5 5 10.5C5.82812 10.5 6.5 11.1719 6.5 12Z" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M13.5 12C13.5 12.8281 12.8281 13.5 12 13.5C11.1719 13.5 10.5 12.8281 10.5 12C10.5 11.1719 11.1719 10.5 12 10.5C12.8281 10.5 13.5 11.1719 13.5 12Z" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
@@ -125,7 +125,7 @@ export default function NotificationPage() {
                         </div>
                         <div className="flex flex-col items-center gap-1">
                             <p className="text-sm text-[#7E7E7E]">14h</p>
-                            <button type="button">
+                            <button type="button" onClick={() => dispatch(setSystemNotification(true))}>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6.5 12C6.5 12.8281 5.82812 13.5 5 13.5C4.17188 13.5 3.5 12.8281 3.5 12C3.5 11.1719 4.17188 10.5 5 10.5C5.82812 10.5 6.5 11.1719 6.5 12Z" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M13.5 12C13.5 12.8281 12.8281 13.5 12 13.5C11.1719 13.5 10.5 12.8281 10.5 12C10.5 11.1719 11.1719 10.5 12 10.5C12.8281 10.5 13.5 11.1719 13.5 12Z" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />

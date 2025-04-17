@@ -14,10 +14,11 @@ import profileAvatar from "@/images/profile.png"
 
 import { Checkbox, Field, Label, Select, Switch } from "@headlessui/react";
 import { categoryData } from "@/pages/category/mock";
-import { useAppDispatch } from "@/hooks";
-import { setIsScheduleRequest } from "@/features/app";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { setCustomerModal, setIsScheduleRequest } from "@/features/app";
 
-export default function CustomerOrder({ isOpen, setIsOpen, defaultStep }: { isOpen: boolean, setIsOpen: (isOpen: boolean) => void, defaultStep?: number }) {
+export default function CustomerOrder({ defaultStep }: { defaultStep?: number }) {
+    const { isCustomerModal } = useAppSelector(state => state.app);
     const dispatch = useAppDispatch();
     const [step, setStep] = useState(defaultStep || 0);
     const [selected, setSelected] = useState({
@@ -57,7 +58,7 @@ export default function CustomerOrder({ isOpen, setIsOpen, defaultStep }: { isOp
             setStep((prev) => prev + 1);
         } else if (step === 5) {
             dispatch(setIsScheduleRequest(true));
-            setIsOpen(false);
+            dispatch(setCustomerModal(false));
         }
 
     }
@@ -115,7 +116,7 @@ export default function CustomerOrder({ isOpen, setIsOpen, defaultStep }: { isOp
 
 
     return (
-        <BottomSheet isOpen={isOpen} showNotch={false} onClose={() => setIsOpen(false)}>
+        <BottomSheet isOpen={isCustomerModal} showNotch={false} onClose={() => dispatch(setCustomerModal(false))}>
 
             <div className={classNames('', {
                 'bg-[#F4ABBF] px-4 pt-6 pb-4 !mb-0': step === 5,
@@ -128,7 +129,7 @@ export default function CustomerOrder({ isOpen, setIsOpen, defaultStep }: { isOp
                         </svg>
                     </button>
                     <h2 className="font-semibold text-md">{step === 0 ? 'What service do you need?' : step === 1 ? 'What cleaning would you like?' : step === 2 ? 'Where would you like to have cleaned?' : step === 3 ? 'Select options' : step === 4 ? 'Choose service provider' : 'Provider profile'}</h2>
-                    <button type="button" onClick={() => setIsOpen(false)} >
+                    <button type="button" onClick={() => dispatch(setCustomerModal(false))} >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5.5 18.5L18.5 5.5M18.5 18.5L5.5 5.5" stroke="#0D0D0D" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>

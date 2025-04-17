@@ -1,6 +1,9 @@
+import { setSystemNotification } from "@/features/app";
 import { recentServiceData } from "./mock";
+import { useAppDispatch } from "@/hooks";
 
 export default function RecentServices() {
+    const dispatch = useAppDispatch()
     return (
         <section className="flex flex-col items-start gap-4 p-4">
             <h1 className="text-[18px] text-[#262626] font-semibold">Recents</h1>
@@ -27,7 +30,7 @@ export default function RecentServices() {
                                 </div>
                                 <p className="text-xs text-[#7E7E7E]">{date}</p>
                             </div>
-                            <button>
+                            <button onClick={() => dispatch(setSystemNotification(true))}>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.75 3.5L16.25 12L7.75 20.5" stroke="#E60000" strokeMiterlimit="10" strokeLinecap="round" />
                                 </svg>

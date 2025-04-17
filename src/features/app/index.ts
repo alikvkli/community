@@ -10,8 +10,13 @@ const initialState: InitialStateProps = {
     providerNotification: false,
     acceptAppointment: false,
     isCheckout: false,
-    checkPayment : false,
-    searchText:""
+    checkPayment: false,
+    searchText: "",
+    isProviderModal: false,
+    isCustomerModal: false,
+    isProviderProfileDone: false,
+    profileIsFavorite: false,
+    systemNotification: false
 }
 
 const appSlice = createSlice({
@@ -47,6 +52,21 @@ const appSlice = createSlice({
         },
         setSearchText: (state, action: PayloadAction<InitialStateProps['searchText']>) => {
             state.searchText = action.payload;
+        },
+        setCustomerModal: (state, action: PayloadAction<InitialStateProps['isCustomerModal']>) => {
+            state.isCustomerModal = action.payload;
+        },
+        setProviderModal: (state, action: PayloadAction<InitialStateProps['isProviderModal']>) => {
+            state.isProviderModal = action.payload;
+        },
+        setProviderProfileDone: (state, action: PayloadAction<InitialStateProps['isProviderProfileDone']>) => {
+            state.isProviderProfileDone = action.payload;
+        },
+        setProfileIsFavorite: (state, action: PayloadAction<InitialStateProps['profileIsFavorite']>) => {
+            state.profileIsFavorite = action.payload;
+        },
+        setSystemNotification: (state, action: PayloadAction<InitialStateProps['systemNotification']>) => {
+            state.systemNotification = action.payload;
         }
     }
 });
@@ -60,7 +80,12 @@ export const {
     setAcceptAppointment,
     setIsCheckOut,
     setCheckPayment,
-    setSearchText
+    setSearchText,
+    setCustomerModal,
+    setProviderModal,
+    setProviderProfileDone,
+    setProfileIsFavorite,
+    setSystemNotification
 } = appSlice.actions;
 
 export default appSlice.reducer;

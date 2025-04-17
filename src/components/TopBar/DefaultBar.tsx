@@ -20,12 +20,12 @@ export default function DefaultTopBar() {
                 {login ? (
                     <>
                         <div className="flex items-center">
-                            <div className="w-12 h-12">
+                            <Link to="/" className="w-12 h-12">
                                 <CommunityIcon />
-                            </div>
+                            </Link>
                         </div>
 
-                        <div className="flex shadow-lg gap-2 rounded-2xl p-[2px]">
+                        <div className="flex shadow-lg gap-2 rounded-2xl p-[2px] border border-[#ebebeb]">
                             <button onClick={() => dispatch(setCustomer(true))} className={classNames('transition-all px-2 py-[2.5px]', {
                                 'bg-vf-red text-white rounded-full': isCustomer
                             })}>Customer</button>

@@ -1,9 +1,13 @@
+import { setProviderModal } from "@/features/app";
+import { useAppDispatch } from "@/hooks";
+
 export default function GetStarted() {
+    const dispatch = useAppDispatch();
     return (
         <section className="flex flex-col items-center gap-4 p-4">
             <div className="flex items-center justify-between w-full">
                 <h1 className="text-[18px] text-[#262626] font-semibold">Get started</h1>
-                <button className="text-vf-red underline flex items-center gap-2">
+                <button onClick={() => dispatch(setProviderModal(true))} className="text-vf-red underline flex items-center gap-2">
                     View all steps
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5.16675 2.33301L10.8334 7.99967L5.16675 13.6663" stroke="#E60000" strokeMiterlimit="10" strokeLinecap="round" />
