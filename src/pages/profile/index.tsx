@@ -3,6 +3,9 @@ import profileAvatar from "@/images/profile.png"
 import service2 from "@/images/services/service_2.png"
 import { Switch } from "@headlessui/react";
 
+import post_1 from "@/images/posts/post_1.jpg"
+import post_2 from "@/images/posts/post_2.jpg"
+
 export default function ProfilePage() {
     return (
         <PublicLayout>
@@ -142,7 +145,7 @@ export default function ProfilePage() {
                 <h2 className="font-semibold text-lg pb-4">Portfolio</h2>
                 <div className="flex items-center  gap-4 overflow-x-auto">
                     <div className="flex flex-col min-w-[270px] gap-3">
-                        <img className="rounded-2xl w-full h-[180px]" src="https://s3-alpha-sig.figma.com/img/ddda/3308/8f33d803daf91a15f27d70a2a56c5a44?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IZVbDqJL0~lm6OTA6YDkNY3xMXRNajuyz5YmzwNKZcezna1lDQD19i~UEcD5sP7ixsYB1BzUBW72QBHl53KizRF3WLci~Ou790FkvrwY9XPPPXQWCX-qzG1K-XbrqnNgSEeEWd3l80GZ6ZCx9p-u3q-rc-lQQ6VX1njOUgebECAYt6uC~Tb1Us3xEVvsn0UbWdvemC3fhmGCovY2F3ZGF-VyhmHIJD-LDjr2Inoi072dLmd6VDn0DqS6LVtztj4VDOzyawMi-POe3aHkCM43aLPT2sUtlr1c18IJ-eheoe9-HM1Vm6Ep3pYAYkChnh-BMt8eB591izqRlPLQb1rhiw__" />
+                        <img className="rounded-2xl w-full h-[180px]" src={post_1} />
                         <div className="">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
@@ -164,29 +167,7 @@ export default function ProfilePage() {
                     </div>
 
                     <div className="flex flex-col min-w-[270px]  gap-3">
-                        <img className="rounded-2xl w-full h-[180px]" src="https://s3-alpha-sig.figma.com/img/2119/855a/ad1c819711f894f1fa6970e4e2331107?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=FJgcUqDGct2iDyNf4Wn~14FK0CEV17oOy5y-S5q2FwOhv5OxdA2Kn8GbzNNNnlnmcngb7btA3o1q~dn3Trod4x7MeqMNXZSXA6uicwUD64wxmO3U4JOVKGfX-qrIz63-4bhvlFayXGtffyNkaWqoenISi1nSBPwrnBhh0xXnr63l9P30c5Behaoee9FbTN0jui9UQ2y-2yBBFCCVUEG4ba40oc~Wua~2Pne8jQbzuNfEbhcrC5qzyMiYiGKjnS~7q7djGCi3tdKqYfgBmHpsUKKLq2NhpaXz-rDKKEmTJocNpoWXAHx27YAIUnK7840HDNZfEmngb7vUP1Lx4BlI9A__" />
-                        <div className="">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <p className="font-semibold text-lg">Home cleaning</p>
-                                    <div className="flex items-center gap-1">
-                                        <span className="block rounded-full w-[10px] h-[10px] bg-[#B04A98]"></span>
-                                        Deep
-                                    </div>
-                                </div>
-                                <div className="bg-vf-red/10 mb-2 rounded-full px-[6px] py-[2px] flex items-center justify-center gap-1">
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.45776 9.09984C6.18841 8.90452 5.82431 8.90452 5.55496 9.09984L2.74948 11.1343L3.79607 7.80394C3.88902 7.50816 3.79615 7.18453 3.55877 6.98352L0.895704 4.72846H4.17327C4.50386 4.72846 4.79585 4.51741 4.9018 4.20641L5.99353 1.00189L7.02399 4.19457C7.1263 4.51157 7.42122 4.72846 7.75644 4.72846H11.0936L8.37714 6.97816C8.13177 7.18137 8.03716 7.51421 8.13713 7.8156L8.6117 7.65817L8.13713 7.8156L9.23 11.1102L6.45776 9.09984ZM2.18614 11.5428C2.18624 11.5427 2.18635 11.5426 2.18646 11.5425L2.18614 11.5428ZM9.45432 11.7864C9.45428 11.7862 9.45424 11.7861 9.4542 11.786L9.45432 11.7864Z" fill="#E60000" stroke="#E60000" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                    <span>4.9</span>
-                                </div>
-                            </div>
-                            <p>Comprehensive home cleaning, offering deep sanitization to maintain a fresh and clean living .</p>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col min-w-[270px]  gap-3">
-                        <img className="rounded-2xl w-full h-[180px]" src="https://s3-alpha-sig.figma.com/img/2119/855a/ad1c819711f894f1fa6970e4e2331107?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=FJgcUqDGct2iDyNf4Wn~14FK0CEV17oOy5y-S5q2FwOhv5OxdA2Kn8GbzNNNnlnmcngb7btA3o1q~dn3Trod4x7MeqMNXZSXA6uicwUD64wxmO3U4JOVKGfX-qrIz63-4bhvlFayXGtffyNkaWqoenISi1nSBPwrnBhh0xXnr63l9P30c5Behaoee9FbTN0jui9UQ2y-2yBBFCCVUEG4ba40oc~Wua~2Pne8jQbzuNfEbhcrC5qzyMiYiGKjnS~7q7djGCi3tdKqYfgBmHpsUKKLq2NhpaXz-rDKKEmTJocNpoWXAHx27YAIUnK7840HDNZfEmngb7vUP1Lx4BlI9A__" />
+                        <img className="rounded-2xl w-full h-[180px]" src={post_2} />
                         <div className="">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
